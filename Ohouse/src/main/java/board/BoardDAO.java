@@ -381,7 +381,7 @@ public class BoardDAO {
 //				String sql = "select * from commentboard where num = ?";
 				String sql = "select * from commentboard;";
 				pstmt = con.prepareStatement(sql);
-//	  			pstmt.setInt(1, num);
+//	  			pstmt.setInt(1, c_num);
 				
 				rs = pstmt.executeQuery();
 				
@@ -389,6 +389,7 @@ public class BoardDAO {
 					commentDTO = new CommentDTO();
 					commentDTO.setId(rs.getString("id"));
 					commentDTO.setContent(rs.getString("content"));
+					commentDTO.setC_num(rs.getInt("c_num"));
 					commentDTO.setDate(rs.getTimestamp("date"));
 				}
 			} catch (Exception e) {
@@ -438,6 +439,7 @@ public class BoardDAO {
 					// => BoardDTO객체생성 set메서드 호출 열데이터 저장
 					CommentDTO commentDTO = new CommentDTO();
 					commentDTO.setNum(rs.getInt("num"));
+					commentDTO.setC_num(rs.getInt("c_num"));
 					commentDTO.setId(rs.getString("id"));
 					commentDTO.setContent(rs.getString("content"));
 					commentDTO.setDate(rs.getTimestamp("date"));

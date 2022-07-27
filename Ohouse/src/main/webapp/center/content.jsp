@@ -102,7 +102,7 @@ if(id != null) {
 <div class="clear"></div>
 
 </article>
-<!-- 댓글 -->
+<!-- 댓글쓰기창 -->
 <%
 CommentDTO commentDTO = boardDAO.getComment();
 
@@ -119,6 +119,8 @@ List<CommentDTO> commentList = boardDAO.getCommentList(num);
 	</table>
 	<input type="submit" value="댓글작성" class="btn"/>
 	</form>
+	
+<!-- 	댓글목록 -->
 	<table>
 	 <% 
 	 for(int i = 0; i<commentList.size(); i++){
@@ -128,7 +130,7 @@ List<CommentDTO> commentList = boardDAO.getCommentList(num);
 			<tr><td><input type="hidden" name="c_num" value="<%=commentDTO.getC_num() %>"/></td></tr>
 			<tr><td>댓글작성자 <%=commentDTO.getId() %></td></tr>
 			<tr><td>댓글내용 <%=commentDTO.getContent() %></td></tr>
-			<tr><td>시간 <%=commentDTO.getDate() %></td></tr>
+			<tr><td><%=commentDTO.getDate() %></td></tr>
 			<%
 			if(id.equals(commentDTO.getId())){
 				%>
