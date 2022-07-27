@@ -84,8 +84,6 @@ BoardDTO boardDTO = boardDAO.getBoard(num);
 // String id = 세션값 가져오기
 String id = (String)session.getAttribute("id");
 
-
-
 // 세션값 null이 아니면 
 if(id != null) {
 	// 로그인 글쓴이 비교
@@ -107,17 +105,19 @@ if(id != null) {
 <!-- 댓글 -->
 <%
 CommentDTO commentDTO = boardDAO.getComment();
+
 List<CommentDTO> commentList = boardDAO.getCommentList(num);
+
  if(id != null ){
 	 %>
 	<article>
 	<form action="cmtwrite.jsp" method="post" name="cmtFr">
 	<table>
-	<input type="hidden" name="num" value="<%=boardDTO.getNum() %>" readonly>
+	<tr><td><input type="hidden" name="num" value="<%=boardDTO.getNum() %>" /></td></tr>
 	<tr><td>댓글작성자</td><td><input type="text" name="id" value="<%=id %>" readonly></td></tr>
-	<tr><td>댓글내용</td><td><textarea name="comment" placeholder="댓글을 입력해주세요"></textarea></td></tr>
+	<tr><td>댓글내용</td><td><textarea name="content" placeholder="댓글을 입력해주세요"></textarea></td></tr>
 	</table>
-	<input type="submit" value="댓글작성" class="btn">
+	<input type="submit" value="댓글작성" class="btn"/>
 	</form>
 	<table>
 	 <% 
@@ -125,12 +125,21 @@ List<CommentDTO> commentList = boardDAO.getCommentList(num);
 		commentDTO = commentList.get(i);
 		if(commentDTO != null) {
 			%>
+			<tr><td><input type="hidden" name="c_num" value="<%=commentDTO.getC_num() %>"/></td></tr>
 			<tr><td>댓글작성자 <%=commentDTO.getId() %></td></tr>
-			<tr><td>댓글내용 <%=commentDTO.getComment() %></td></tr>
+			<tr><td>댓글내용 <%=commentDTO.getContent() %></td></tr>
 			<tr><td>시간 <%=commentDTO.getDate() %></td></tr>
-			<tr><td><a class="btn" href="">삭제</a></td></tr>
+			<%
+			if(id.equals(commentDTO.getId())){
+				%>
+				<tr><td><input type="button" value="삭제" class="btn" onclick="location.href='cmtdelete.jsp?c_num=<%= commentDTO.getC_num() %>&num=<%=boardDTO.getNum() %>'" /></td></tr>
+				<%
+			}
+			%>
 			<%	
 		}
+		%>
+	 <% 
 	 }
 	%>
 	</table>

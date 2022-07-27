@@ -15,8 +15,9 @@ request.setCharacterEncoding("utf-8");
 
 // id comment 파라미터 가져오기
 String id = request.getParameter("id");
-String comment = request.getParameter("comment");
+String content = request.getParameter("content");
 int num = Integer.parseInt(request.getParameter("num"));
+
 //패키지 board 파일 CommentDTO
 //멤버변수 정의, set get메서드 정의
 //CommentDTO 객체생성
@@ -24,7 +25,7 @@ CommentDTO commentDTO = new CommentDTO();
 
 //set 메서드 호출 파라미터값 저장
 commentDTO.setId(id);
-commentDTO.setComment(comment);
+commentDTO.setContent(content);
 commentDTO.setNum(num);
 
 //패키지 board 파일 BoardDAO

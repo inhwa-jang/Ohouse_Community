@@ -343,11 +343,12 @@ public class BoardDAO {
 				con=getConnection();
 			
 				//3 sql insert구문 만들기
-				String sql="insert into commentboard(id,comment,num,date) values(?,?,?,now())";
+				String sql="insert into commentboard(id,content,num,c_num,date) values(?,?,?,?,now())";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, commentDTO.getId());
-				pstmt.setString(2, commentDTO.getComment());
+				pstmt.setString(2, commentDTO.getContent());
 				pstmt.setInt(3, commentDTO.getNum());
+				pstmt.setInt(4, commentDTO.getC_num());
 				
 				//4 실행
 				pstmt.executeUpdate();
@@ -364,6 +365,7 @@ public class BoardDAO {
 					
 				}	
 				System.out.println(commentDTO.getId());
+				System.out.println(commentDTO.getContent());
 			}
 		} // insertComment 메서드 끝
 		
@@ -386,7 +388,7 @@ public class BoardDAO {
 				if(rs.next()) {
 					commentDTO = new CommentDTO();
 					commentDTO.setId(rs.getString("id"));
-					commentDTO.setComment(rs.getString("comment"));
+					commentDTO.setContent(rs.getString("content"));
 					commentDTO.setDate(rs.getTimestamp("date"));
 				}
 			} catch (Exception e) {
@@ -437,7 +439,7 @@ public class BoardDAO {
 					CommentDTO commentDTO = new CommentDTO();
 					commentDTO.setNum(rs.getInt("num"));
 					commentDTO.setId(rs.getString("id"));
-					commentDTO.setComment(rs.getString("comment"));
+					commentDTO.setContent(rs.getString("content"));
 					commentDTO.setDate(rs.getTimestamp("date"));
 					
 					// => 배열 한칸에 게시판글 BoardDTO 주소값을 저장 .add(DTO주소값)
@@ -454,5 +456,29 @@ public class BoardDAO {
 			// List 배열내장객체 주소값을 리턴
 			return commentList;
 		} // getBoardList 메서드 끝
+		
+		
+		public void deleteComment(int c_num) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				con = getConnection();
+							
+				String sql = "delete from commentboard where c_num =?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, c_num);
+						
+				pstmt.executeUpdate();
+						
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					if(rs != null) try { rs.close(); } catch (Exception e2) {  }
+					if(pstmt != null) try { pstmt.close(); } catch (Exception e2) {  }
+					if(con != null) try { con.close(); } catch (Exception e2) {  }
+				}
+					System.out.println(c_num);
+			}
 	
 }//클래스

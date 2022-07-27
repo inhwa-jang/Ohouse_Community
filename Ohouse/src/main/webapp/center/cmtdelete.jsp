@@ -9,11 +9,14 @@
 </head>
 <body>
 <%
-int num = Integer.parseInt(request.getParameter("num"));
+int c_num = Integer.parseInt(request.getParameter("c_num"));
 
 BoardDAO boardDAO = new BoardDAO();
 
-// boardDAO.deleteComment(num);
+boardDAO.deleteComment(c_num);
+
+
+response.sendRedirect("notice.jsp");
 %>
 </body>
 </html>
