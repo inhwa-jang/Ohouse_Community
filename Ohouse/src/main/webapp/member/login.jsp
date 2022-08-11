@@ -35,14 +35,14 @@
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="#">Join us</a></li>
-<li><a href="#">Privacy policy</a></li>
+<li><a href="../member/join.jsp">가입하기</a></li>
+<li><a href="../main/main.jsp">홈</a></li>
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->
 <!-- 본문내용 -->
 <article>
-<h1>Login</h1>
+<h1>로그인</h1>
 <form action="loginPro.jsp" id="join" method="post">
 <fieldset>
 <legend>Login Info</legend>

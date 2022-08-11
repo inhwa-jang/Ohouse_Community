@@ -52,7 +52,7 @@ if(id == null) {
 }
 %>
 <article>
-<h1>Notice Write</h1>
+<h1>글쓰기</h1>
 <form action="writePro.jsp" method="post">
 <input type="hidden" name="pass" value="1111">
 <table id="notice">

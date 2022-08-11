@@ -127,6 +127,7 @@ List<CommentDTO> commentList = boardDAO.getCommentList(num);
 		commentDTO = commentList.get(i);
 		if(commentDTO != null) {
 			%>
+			
 			<tr><td><input type="hidden" name="c_num" value="<%=commentDTO.getC_num() %>"/></td></tr>
 			<tr><td>댓글작성자 <%=commentDTO.getId() %></td></tr>
 			<tr><td>댓글내용 <%=commentDTO.getContent() %></td></tr>
@@ -134,7 +135,7 @@ List<CommentDTO> commentList = boardDAO.getCommentList(num);
 			<%
 			if(id.equals(commentDTO.getId())){
 				%>
-				<tr><td><input type="button" value="삭제" class="btn" onclick="location.href='cmtdelete.jsp?c_num=<%= commentDTO.getC_num() %>&num=<%=boardDTO.getNum() %>'" /></td></tr>
+				<td><input type="button" value="삭제" class="btn" onclick="location.href='cmtdelete.jsp?c_num=<%= commentDTO.getC_num() %>&num=<%=boardDTO.getNum() %>'" /></td>
 				<%
 			}
 			%>

@@ -137,7 +137,7 @@ function findPostCode() {
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="#">가입하기</a></li>
+<li><a href="../member/join.jsp">가입하기</a></li>
 <li><a href="../main/main.jsp">홈</a></li>
 </ul>
 </nav>

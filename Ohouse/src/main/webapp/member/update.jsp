@@ -65,8 +65,8 @@
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="#">Join us</a></li>
-<li><a href="#">Privacy policy</a></li>
+<li><a href="../member/join.jsp">가입하기</a></li>
+<li><a href="../main/main.jsp">홈</a></li>
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->
@@ -81,7 +81,7 @@ MemberDAO memberDAO = new MemberDAO();
 MemberDTO memberDTO = memberDAO.getMember(id);
 %>
 <article>
-<h1>Update Us</h1>
+<h1>회원 정보 수정</h1>
 <form action="updatePro.jsp" id="join" method="post">
 <fieldset>
 <legend>Basic Info</legend>
